@@ -302,12 +302,19 @@ input[type="range"] {
 .card-body {
   display: grid;
   gap: 6px;
+  min-height: 0;
+  overflow: hidden;
   padding: 9px;
 }
 
 .card-name {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: 15px;
   font-weight: 800;
-  line-height: 1.05;
+  line-height: 1.06;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .card-meta {
@@ -322,7 +329,34 @@ input[type="range"] {
   border-radius: 999px;
   color: var(--soft);
   background: rgba(0, 0, 0, 0.2);
+  font-size: 11px;
+  line-height: 1.15;
+}
+
+.card .small {
+  display: -webkit-box;
+  overflow: hidden;
   font-size: 12px;
+  line-height: 1.18;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+.tool-mini .card-name,
+.hand-card .card-name {
+  font-size: 14px;
+}
+
+.tool-mini .tag,
+.hand-card .tag {
+  font-size: 10px;
+}
+
+.tool-mini .small,
+.hand-card .small {
+  font-size: 11px;
+  line-height: 1.14;
+  -webkit-line-clamp: 4;
 }
 
 .count {
