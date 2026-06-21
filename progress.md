@@ -7,6 +7,7 @@ Progress:
 - Built the static browser app with Deck Builder, Gacha, Battle, Daily Reward, Daily Missions, Lore, page music, separate audio controls, MIDI-style WebAudio SFX, and victory/defeat result art.
 - Verified with node syntax checks, the required web-game Playwright client, targeted browser flows, desktop screenshots, mobile screenshot, and music URL checks.
 - Enabled GitHub Pages for main branch root and tightened card typography so names, tags, and descriptions fit inside cards.
+- Reworked battle flow to one card play per round, added Help modal, round-scoring animation/review, final pre-result review, result breakdowns, clearer type-specific card art sheets, and a dedicated Gacha image.
 
 TODO:
 - Commit and push.

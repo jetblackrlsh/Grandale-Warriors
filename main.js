@@ -36,16 +36,24 @@ const BEATS = {
   light: ["frost", "fire"],
 };
 
-const CARD_ART = {
+const WARRIOR_ART = {
   amber: [0, 0], fox: [1, 0], otter: [2, 0], owl: [3, 0],
-  fireaxe: [0, 1], watercharm: [1, 1], windboots: [2, 1], stoneshield: [3, 1],
-  portal: [0, 2], lantern: [1, 2], vine: [2, 2], compass: [3, 2],
+  badger: [0, 1], hare: [1, 1], lynx: [2, 1], deer: [3, 1],
+};
+
+const TOOL_ART = {
+  fireaxe: [0, 0], watercharm: [1, 0], windboots: [2, 0], stoneshield: [3, 0],
+  frostchisel: [0, 1], stormorb: [1, 1], vinegauntlet: [2, 1], lightcompass: [3, 1],
+};
+
+const MAGIC_ART = {
+  reforge: [0, 0], treaty: [1, 0], index: [2, 0],
+  favor: [0, 1], summons: [1, 1], return: [2, 1],
 };
 
 const BIOME_ART = {
-  Amberwood: [0, 0], Emberforge: [1, 0], Riverdale: [2, 0], Stormpeak: [3, 0],
-  Stonevault: [3, 0], Skygrass: [2, 0], Frostfen: [3, 0], Greenweald: [0, 0],
-  fire: [0, 1], water: [1, 1], vine: [2, 1], storm: [3, 1],
+  Amberwood: [0, 0], Emberforge: [1, 0], Riverdale: [2, 0],
+  Stormpeak: [0, 1], Stonevault: [1, 1], Greenweald: [2, 1],
 };
 
 const CARDS = [
@@ -53,30 +61,30 @@ const CARDS = [
   warrior("w-fox", "Cinderpaw Smith", "Emberforge", "fire", "Foxfolk hammer duelist from the volcanic forges.", "fox"),
   warrior("w-otter", "Brin Riverglass", "Riverdale", "water", "Otterfolk scout who guards canal caravans.", "otter"),
   warrior("w-owl", "Orra Thunderquill", "Stormpeak", "storm", "Owlfolk seer with a staff full of summer lightning.", "owl"),
-  warrior("w-stone", "Mossback Warder", "Stonevault", "stone", "Badgerfolk border guardian in runed plate.", "stoneshield"),
-  warrior("w-wind", "Sable Skyrunner", "Skygrass", "wind", "Harefolk courier who reads pressure shifts.", "windboots"),
-  warrior("w-frost", "Iva Snowmender", "Frostfen", "frost", "Lynxfolk healer whose tools hold clean cold.", "watercharm"),
-  warrior("w-vine", "Tarlan Rootbow", "Greenweald", "vine", "Deerfolk ranger bound to orchard roads.", "vine"),
+  warrior("w-stone", "Mossback Warder", "Stonevault", "stone", "Badgerfolk border guardian in runed plate.", "badger"),
+  warrior("w-wind", "Sable Skyrunner", "Skygrass", "wind", "Harefolk courier who reads pressure shifts.", "hare"),
+  warrior("w-frost", "Iva Snowmender", "Frostfen", "frost", "Lynxfolk healer whose tools hold clean cold.", "lynx"),
+  warrior("w-vine", "Tarlan Rootbow", "Greenweald", "vine", "Deerfolk ranger bound to orchard roads.", "deer"),
   tool("t-fire", "Ember-Hold Axe", "fire", "A fire tool that bites through vine and frost.", "fireaxe"),
   tool("t-water", "Riverglass Vessel", "water", "A purifying vessel that cools fire and cracks stone.", "watercharm"),
   tool("t-wind", "Gale-Step Boots", "wind", "Courier boots that outpace storm and frost.", "windboots"),
   tool("t-stone", "Borderstone Shield", "stone", "A shield that grounds wind and storm.", "stoneshield"),
-  tool("t-frost", "Hoarfang Chisel", "frost", "A cold edge that slows water and vine.", "watercharm"),
-  tool("t-storm", "Thunder Orb", "storm", "A charged focus that shocks water and light.", "portal"),
-  tool("t-vine", "Rootbind Gauntlet", "vine", "Living craft that breaks stone and dims light.", "vine"),
-  tool("t-light", "Guild Light Compass", "light", "A lantern compass that clears frost and fire.", "compass"),
+  tool("t-frost", "Hoarfang Chisel", "frost", "A cold edge that slows water and vine.", "frostchisel"),
+  tool("t-storm", "Thunder Orb", "storm", "A charged focus that shocks water and light.", "stormorb"),
+  tool("t-vine", "Rootbind Gauntlet", "vine", "Living craft that breaks stone and dims light.", "vinegauntlet"),
+  tool("t-light", "Guild Light Compass", "light", "A lantern compass that clears frost and fire.", "lightcompass"),
   biome("b-amber", "Amberwood Guild Road", "Amberwood", "Neutral roads help adaptable warriors."),
   biome("b-ember", "Emberforge Kilnfield", "Emberforge", "Heat-shimmered forges feed firecraft."),
   biome("b-river", "Riverdale Locks", "Riverdale", "Canal wards carry clean water through farms."),
   biome("b-storm", "Stormpeak Citadel", "Stormpeak", "Lightning towers turn thunder into law."),
   biome("b-stone", "Stonevault Gate", "Stonevault", "Border walls echo with grounded runes."),
   biome("b-green", "Greenweald Orchard", "Greenweald", "Living bridges drink sunlight and rain."),
-  magic("m-shift-tool", "Prismatic Reforge", "Change one equipped tool to a random element.", "portal", "shiftTool"),
-  magic("m-shift-biome", "Weather Treaty", "Change the active biome to a random biome.", "compass", "shiftBiome"),
-  magic("m-draw-magic", "Seer's Index", "Draw a random Magic card from your deck.", "portal", "drawMagic"),
-  magic("m-draw-tool", "Smith's Favor", "Draw a random Element Tool from your deck.", "lantern", "drawTool"),
-  magic("m-draw-warrior", "Guild Summons", "Draw a random Warrior from your deck.", "compass", "drawWarrior"),
-  magic("m-reclaim", "Lantern of Return", "Add a random discarded card to your hand.", "lantern", "reclaim"),
+  magic("m-shift-tool", "Prismatic Reforge", "Change one equipped tool to a random element.", "reforge", "shiftTool"),
+  magic("m-shift-biome", "Weather Treaty", "Change the active biome to a random biome.", "treaty", "shiftBiome"),
+  magic("m-draw-magic", "Seer's Index", "Draw a random Magic card from your deck.", "index", "drawMagic"),
+  magic("m-draw-tool", "Smith's Favor", "Draw a random Element Tool from your deck.", "favor", "drawTool"),
+  magic("m-draw-warrior", "Guild Summons", "Draw a random Warrior from your deck.", "summons", "drawWarrior"),
+  magic("m-reclaim", "Lantern of Return", "Add a random discarded card to your hand.", "return", "reclaim"),
 ];
 
 const CARD_BY_ID = Object.fromEntries(CARDS.map((card) => [card.id, card]));
@@ -136,6 +144,7 @@ let selectedDeckId = state.activeDeckId;
 let audio = null;
 let audioCtx = null;
 let musicUnlocked = false;
+let helpOpen = false;
 
 function defaultState() {
   const starter = makeStarterDeck();
@@ -237,6 +246,7 @@ function render() {
         </div>
         <nav class="nav">
           ${PAGES.map(([id, label]) => `<button class="${page === id ? "active" : ""}" data-page="${id}">${label}</button>`).join("")}
+          <button data-action="open-help">Help</button>
         </nav>
         <div class="audio-controls">
           <button data-action="toggle-music">${state.audio.enabled ? "Music On" : "Music Off"}</button>
@@ -245,6 +255,7 @@ function render() {
         </div>
       </header>
       <main class="page">${renderPage()}</main>
+      ${helpOpen ? renderHelpModal() : ""}
     </div>
   `;
 }
@@ -256,6 +267,43 @@ function renderPage() {
   if (page === "missions") return renderMissions();
   if (page === "lore") return renderLore();
   return renderBattle();
+}
+
+function renderHelpModal() {
+  return `
+    <div class="modal-backdrop" data-action="close-help">
+      <section class="help-modal panel" role="dialog" aria-modal="true" aria-labelledby="help-title">
+        <div class="modal-head">
+          <h2 id="help-title">How to Play</h2>
+          <button data-action="close-help">Close</button>
+        </div>
+        <div class="help-grid">
+          <div>
+            <h3>Battle Basics</h3>
+            <p>Each duel lasts three scored rounds. The higher advantage total wins the round and earns one point. Most points after round three wins the battle.</p>
+            <p>At the start of each round, both sides draw two cards. You may play exactly one card from your hand each round, then score the round when ready.</p>
+          </div>
+          <div>
+            <h3>Cards</h3>
+            <p><strong>Warrior:</strong> replaces your current warrior. A warrior gives base advantage and can gain a biome bonus.</p>
+            <p><strong>Element Tool:</strong> equips to your warrior. Tools add advantage and can beat or lose to opposing tool elements.</p>
+            <p><strong>Biome:</strong> replaces the shared active biome. Only one biome is active at a time.</p>
+            <p><strong>Magic:</strong> replaces your current magic. Its effect can be used once per round while it is in play.</p>
+          </div>
+          <div>
+            <h3>Other Pages</h3>
+            <p><strong>Deck Builder:</strong> keep at least seven cards and include Warrior, Magic, Biome, and Element Tool cards.</p>
+            <p><strong>Gacha:</strong> spend gold for a random card. <strong>Daily Reward:</strong> claim one free card per day.</p>
+            <p><strong>Daily Missions:</strong> complete three daily goals for gold. <strong>Lore:</strong> read about Grand Dale.</p>
+          </div>
+          <div>
+            <h3>Round Review</h3>
+            <p>After a round is scored, an animation shows the winning warrior. Read the log and advantage breakdown, then press the next button yourself.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  `;
 }
 
 function pageHeader(title, copy, extra = goldPill()) {
@@ -317,7 +365,7 @@ function renderGacha() {
   return `
     ${pageHeader("Gacha", "Spend 50 gold to commission a random card from traveling smiths, guild brokers, and border merchants.")}
     <div class="shop-display">
-      <div class="feature-art panel"></div>
+      <div class="feature-art gacha-art panel"></div>
       <section class="panel section stack">
         <h3>Smith's Guild Draw</h3>
         <p class="muted">Every purchase adds one random card to your collection. Rare cards are not locked away; the strength comes from building a coherent deck.</p>
@@ -382,8 +430,10 @@ function renderBattle() {
   if (battle.result) return renderResult();
   const playerAdv = advantage(battle.player, battle.opponent, battle.biome).total;
   const oppAdv = advantage(battle.opponent, battle.player, battle.biome).total;
+  const reviewMode = battle.awaitingNext || battle.awaitingFinal;
   return `
-    ${pageHeader("Battle", "Face a random computer opponent over three scoring turns. Draw two cards each turn, play your hand, use one magic effect, then score advantage.", `<div class="stack"><div class="gold-pill">${state.gold} gold</div><button data-action="new-battle">New Battle</button></div>`)}
+    ${pageHeader("Battle", "Play one card per round, optionally use your magic effect, then score advantage over three rounds.", `<div class="stack"><div class="gold-pill">${state.gold} gold</div><button data-action="new-battle">New Battle</button></div>`)}
+    ${battle.roundFlash ? renderRoundFlash() : ""}
     <section class="battle-board">
       ${renderDuelist("player", battle.player, `You: ${playerAdv}`)}
       <div class="battle-center">
@@ -391,16 +441,19 @@ function renderBattle() {
         <div class="panel section">
           <h3>Turn ${battle.turn} / 3</h3>
           <div class="scoreline">You ${scorePips(battle.player.points)} <span class="muted">vs</span> ${scorePips(battle.opponent.points)} Opponent</div>
-          <p class="muted small">Click cards in hand to play them. A new Warrior or Magic card discards your old one. Any Biome replaces the current biome for both duelists.</p>
+          <p class="muted small">${reviewMode ? "Round scored. Read the log, then choose when to continue." : "Click one card in hand to play it this round. A new Warrior or Magic discards your old one. Any Biome replaces the shared biome."}</p>
           <div class="battle-actions">
-            <button data-action="use-magic" ${!canUseMagic() ? "disabled" : ""}>Use Magic Effect</button>
-            <button data-action="score-turn">Score Turn</button>
+            <button data-action="use-magic" ${!canUseMagic() || reviewMode ? "disabled" : ""}>Use Magic Effect</button>
+            <button data-action="score-turn" ${reviewMode ? "disabled" : ""}>Score Round</button>
+            ${battle.awaitingNext ? `<button data-action="next-turn">Start Next Round</button>` : ""}
+            ${battle.awaitingFinal ? `<button data-action="show-results">End Battle</button>` : ""}
           </div>
         </div>
+        ${battle.rounds.length ? renderRoundReview(battle.rounds[battle.rounds.length - 1]) : ""}
         <div class="log">${battle.log.slice(-8).map((line) => `<div>${line}</div>`).join("")}</div>
         <div class="panel section">
           <h3>Your Hand</h3>
-          <div class="hand-row">${battle.player.hand.length ? battle.player.hand.map((id, index) => renderCard(CARD_BY_ID[id], { className: "hand-card selectable", action: "play-hand", index })).join("") : `<div class="empty">No cards in hand</div>`}</div>
+          <div class="hand-row">${battle.player.hand.length ? battle.player.hand.map((id, index) => renderCard(CARD_BY_ID[id], { className: `hand-card selectable ${battle.player.cardPlayed || reviewMode ? "disabled" : ""}`, action: "play-hand", index })).join("") : `<div class="empty">No cards in hand</div>`}</div>
         </div>
       </div>
       ${renderDuelist("opponent", battle.opponent, `${battle.opponent.name}: ${oppAdv}`)}
@@ -408,15 +461,67 @@ function renderBattle() {
   `;
 }
 
+function renderRoundFlash() {
+  const flash = battle.roundFlash;
+  return `
+    <div class="round-flash ${flash.winner}">
+      <div>
+        <span>Round ${flash.turn}</span>
+        <strong>${flash.label}</strong>
+        <small>${flash.playerScore} advantage vs ${flash.opponentScore}</small>
+      </div>
+    </div>
+  `;
+}
+
+function renderRoundReview(round) {
+  return `
+    <section class="round-review panel section">
+      <h3>Round ${round.turn} Breakdown</h3>
+      <div class="review-columns">
+        <div>
+          <strong>You: ${round.playerTotal}</strong>
+          <ul>${round.playerDetails.map((item) => `<li>${item}</li>`).join("")}</ul>
+        </div>
+        <div>
+          <strong>${battle.opponent.name}: ${round.opponentTotal}</strong>
+          <ul>${round.opponentDetails.map((item) => `<li>${item}</li>`).join("")}</ul>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
 function renderResult() {
   const won = battle.result === "win";
+  const reason = won
+    ? `You won ${battle.player.points} scored round${battle.player.points === 1 ? "" : "s"} to ${battle.opponent.points}.`
+    : battle.player.points === battle.opponent.points
+      ? `The duel ended tied ${battle.player.points}-${battle.opponent.points}, so the challenger keeps the purse.`
+      : `${battle.opponent.name} won ${battle.opponent.points} scored round${battle.opponent.points === 1 ? "" : "s"} to ${battle.player.points}.`;
   return `
     <section class="result-screen panel" style="--result-art:url('${won ? "assets/art/victory-screen.png" : "assets/art/defeat-screen.png"}')">
       <div class="result-content">
         <h2>${won ? "Victory" : "You Lose"}</h2>
-        <p>${won ? `The guild pays ${battle.reward} gold for your clean win.` : "The road remembers the lesson. Rebuild, redraw, and try again."}</p>
+        <p>${reason} ${won ? `The guild pays ${battle.reward} gold.` : "Adjust your deck and try to build more advantage."}</p>
         <div class="scoreline">You ${scorePips(battle.player.points)} <span class="muted">vs</span> ${scorePips(battle.opponent.points)} Opponent</div>
         <div class="toolbar"><button data-action="new-battle">Battle Again</button><button data-page="deck">Adjust Deck</button></div>
+      </div>
+    </section>
+    <section class="result-breakdown panel section">
+      <h3>Battle Breakdown</h3>
+      <div class="result-rounds">
+        ${battle.rounds.map((round) => `
+          <article class="round-card">
+            <strong>Round ${round.turn}: ${round.winnerLabel}</strong>
+            <p>${round.biome}</p>
+            <p>You ${round.playerTotal} vs ${round.opponentTotal} ${battle.opponent.name}</p>
+            <div class="review-columns">
+              <ul>${round.playerDetails.map((item) => `<li>${item}</li>`).join("")}</ul>
+              <ul>${round.opponentDetails.map((item) => `<li>${item}</li>`).join("")}</ul>
+            </div>
+          </article>
+        `).join("")}
       </div>
     </section>
   `;
@@ -449,7 +554,7 @@ function renderCard(card, options = {}) {
   return `
     <article class="card ${options.className || ""} ${disabled}" ${action} ${id} ${index}>
       ${count}
-      <div class="${card.type === "Biome" ? "biome-art sheet" : "card-art sheet"}" style="${card.type === "Biome" ? biomeStyle(card.biome) : cardStyle(card.art)}"></div>
+      <div class="${artClass(card)} sheet" style="${artStyle(card)}"></div>
       <div class="card-body">
         <div class="card-name">${card.name}</div>
         <div class="card-meta">
@@ -464,14 +569,27 @@ function renderCard(card, options = {}) {
   `;
 }
 
-function cardStyle(key) {
-  const [x, y] = CARD_ART[key] || CARD_ART.compass;
-  return `background-position:${(x / 3) * 100}% ${(y / 2) * 100}%`;
+function artClass(card) {
+  if (card.type === "Warrior") return "warrior-art";
+  if (card.type === "Element Tool") return "tool-art";
+  if (card.type === "Magic") return "magic-art";
+  return "biome-art";
+}
+
+function artStyle(card) {
+  if (card.type === "Warrior") return sheetPosition(WARRIOR_ART[card.art], 4, 2);
+  if (card.type === "Element Tool") return sheetPosition(TOOL_ART[card.art], 4, 2);
+  if (card.type === "Magic") return sheetPosition(MAGIC_ART[card.art], 3, 2);
+  return sheetPosition(BIOME_ART[card.biome], 3, 2);
 }
 
 function biomeStyle(key) {
-  const [x, y] = BIOME_ART[key] || BIOME_ART.Amberwood;
-  return `background-position:${(x / 3) * 100}% ${y * 100}%`;
+  return sheetPosition(BIOME_ART[key], 3, 2);
+}
+
+function sheetPosition(coords = [0, 0], columns, rows) {
+  const [x, y] = coords;
+  return `background-position:${columns === 1 ? 0 : (x / (columns - 1)) * 100}% ${rows === 1 ? 0 : (y / (rows - 1)) * 100}%`;
 }
 
 function scorePips(points) {
@@ -483,7 +601,7 @@ function newBattle() {
   const opponentDeck = shuffle(makeAiDeck());
   const player = makeDuelist("Player", playerDeck);
   const opponent = makeDuelist(randomItem(["Ironfang Raider", "Mistlock Envoy", "Stonegate Captain", "Skygrass Challenger"]), opponentDeck);
-  const next = { turn: 1, biome: null, player, opponent, log: [], result: null, reward: 0 };
+  const next = { turn: 1, biome: null, player, opponent, log: [], rounds: [], roundFlash: null, awaitingNext: false, awaitingFinal: false, result: null, reward: 0 };
   battle = next;
   startTurn();
   next.log.unshift(`${player.name} faces ${opponent.name}. Both warriors step onto the road.`);
@@ -505,13 +623,18 @@ function makeDuelist(name, deck) {
   const warriors = deck.filter((id) => CARD_BY_ID[id].type === "Warrior");
   const warrior = randomItem(warriors);
   deck.splice(deck.indexOf(warrior), 1);
-  return { name, deck, discard: [], hand: [], warrior, magic: null, tools: [], points: 0, magicUsed: false };
+  return { name, deck, discard: [], hand: [], warrior, magic: null, tools: [], points: 0, magicUsed: false, cardPlayed: false };
 }
 
 function startTurn() {
   ["player", "opponent"].forEach((side) => drawCards(battle[side], 2));
   battle.player.magicUsed = false;
   battle.opponent.magicUsed = false;
+  battle.player.cardPlayed = false;
+  battle.opponent.cardPlayed = false;
+  battle.awaitingNext = false;
+  battle.awaitingFinal = false;
+  battle.roundFlash = null;
   playSfx("draw");
 }
 
@@ -526,6 +649,10 @@ function drawCards(duelist, count, type = null) {
 
 function playCard(side, index) {
   const duelist = battle[side];
+  if (duelist.cardPlayed || battle.awaitingNext || battle.awaitingFinal) {
+    if (side === "player") playSfx("error");
+    return false;
+  }
   const [id] = duelist.hand.splice(index, 1);
   const card = CARD_BY_ID[id];
   if (card.type === "Warrior") {
@@ -552,6 +679,8 @@ function playCard(side, index) {
     track(side === "player" ? "biomesPlayed" : "none");
     playSfx(side === "player" ? "playBiome" : "aiPlayBiome");
   }
+  duelist.cardPlayed = true;
+  return true;
 }
 
 function canUseMagic() {
@@ -591,8 +720,7 @@ function useMagic(side) {
 
 function aiTurn() {
   const ai = battle.opponent;
-  let plays = Math.min(3, ai.hand.length);
-  while (plays-- > 0 && ai.hand.length) {
+  if (!ai.cardPlayed && ai.hand.length) {
     const index = Math.floor(Math.random() * ai.hand.length);
     playCard("opponent", index);
   }
@@ -600,30 +728,68 @@ function aiTurn() {
 }
 
 function scoreTurn() {
+  if (battle.awaitingNext || battle.awaitingFinal) return;
   aiTurn();
   const player = advantage(battle.player, battle.opponent, battle.biome);
   const opponent = advantage(battle.opponent, battle.player, battle.biome);
+  let winner = "tie";
+  let winnerLabel = "Tie";
   if (player.total > opponent.total) {
     battle.player.points += 1;
     track("pointsScored");
     battle.log.unshift(`You win the exchange ${player.total} to ${opponent.total}.`);
     playSfx("score");
+    winner = "player";
+    winnerLabel = CARD_BY_ID[battle.player.warrior]?.name || "Your warrior";
   } else if (opponent.total > player.total) {
     battle.opponent.points += 1;
     battle.log.unshift(`${battle.opponent.name} wins the exchange ${opponent.total} to ${player.total}.`);
     playSfx("discard");
+    winner = "opponent";
+    winnerLabel = CARD_BY_ID[battle.opponent.warrior]?.name || battle.opponent.name;
   } else {
     battle.log.unshift(`The exchange ties at ${player.total}. No point awarded.`);
     playSfx("tie");
   }
+  const round = {
+    turn: battle.turn,
+    winner,
+    winnerLabel,
+    biome: battle.biome ? CARD_BY_ID[battle.biome].name : "Open Trade Road",
+    playerTotal: player.total,
+    opponentTotal: opponent.total,
+    playerDetails: player.details,
+    opponentDetails: opponent.details,
+    playerPoints: battle.player.points,
+    opponentPoints: battle.opponent.points,
+  };
+  battle.rounds.push(round);
+  battle.roundFlash = {
+    turn: battle.turn,
+    winner,
+    label: winner === "tie" ? "No point awarded" : `${winnerLabel} wins the round`,
+    playerScore: player.total,
+    opponentScore: opponent.total,
+  };
   if (battle.turn >= 3) finishBattle();
   else {
-    battle.turn += 1;
-    startTurn();
+    battle.awaitingNext = true;
   }
 }
 
 function finishBattle() {
+  if (battle.result) return;
+  battle.awaitingFinal = true;
+  if (battle.turn >= 3 && !battle.result) {
+    const wonPreview = battle.player.points > battle.opponent.points;
+    battle.log.unshift(wonPreview ? "The final exchange is complete. Review the log, then claim victory." : "The final exchange is complete. Review the log, then see the result.");
+    return;
+  }
+}
+
+function showResults() {
+  battle.awaitingFinal = false;
+  battle.awaitingNext = false;
   state.stats.battles += 1;
   track("battles");
   const won = battle.player.points > battle.opponent.points;
@@ -642,19 +808,31 @@ function finishBattle() {
 
 function advantage(duelist, opponent, biomeId) {
   let total = duelist.warrior ? 1 : 0;
-  const details = [];
+  const details = duelist.warrior ? ["+1 active warrior"] : ["+0 no warrior"];
   const warriorCard = CARD_BY_ID[duelist.warrior];
   const biomeCard = biomeId ? CARD_BY_ID[biomeId] : null;
   if (warriorCard && biomeCard?.biome === warriorCard.biomePref) {
     total += 1;
-    details.push("preferred biome");
+    details.push(`+1 preferred biome (${biomeCard.biome})`);
+  } else if (warriorCard) {
+    details.push("+0 biome preference not active");
   }
   duelist.tools.forEach((toolItem) => {
+    const toolCard = CARD_BY_ID[toolItem.id];
     total += 1;
+    details.push(`+1 equipped ${toolCard.name}`);
     if (warriorCard?.element === toolItem.element) total += 1;
+    if (warriorCard?.element === toolItem.element) details.push(`+1 ${toolItem.element} matches warrior element`);
     opponent.tools.forEach((oppTool) => {
-      if (BEATS[toolItem.element]?.includes(oppTool.element)) total += 1;
-      if (BEATS[oppTool.element]?.includes(toolItem.element)) total -= 1;
+      const oppCard = CARD_BY_ID[oppTool.id];
+      if (BEATS[toolItem.element]?.includes(oppTool.element)) {
+        total += 1;
+        details.push(`+1 ${toolItem.element} beats ${oppCard.name}`);
+      }
+      if (BEATS[oppTool.element]?.includes(toolItem.element)) {
+        total -= 1;
+        details.push(`-1 ${oppCard.name} counters ${toolItem.element}`);
+      }
     });
   });
   return { total, details };
@@ -733,12 +911,18 @@ function playSfx(name) {
 }
 
 app.addEventListener("click", (event) => {
+  if (event.target.classList.contains("modal-backdrop")) {
+    helpOpen = false;
+    render();
+    return;
+  }
   const target = event.target.closest("button, article[data-action]");
   if (!target) return;
   unlockAudio();
   const pageTarget = target.dataset.page;
   const action = target.dataset.action;
   if (pageTarget) {
+    helpOpen = false;
     page = pageTarget;
     location.hash = page;
     playSfx("nav");
@@ -746,6 +930,14 @@ app.addEventListener("click", (event) => {
     return;
   }
   const deck = getDeck(selectedDeckId);
+  if (action === "open-help") {
+    helpOpen = true;
+    playSfx("nav");
+  }
+  if (action === "close-help") {
+    helpOpen = false;
+    playSfx("nav");
+  }
   if (action === "toggle-music") {
     state.audio.enabled = !state.audio.enabled;
     state.audio.enabled ? audio.play().catch(() => {}) : audio.pause();
@@ -818,6 +1010,11 @@ app.addEventListener("click", (event) => {
   }
   if (action === "use-magic") useMagic("player");
   if (action === "score-turn") scoreTurn();
+  if (action === "next-turn" && battle?.awaitingNext) {
+    battle.turn += 1;
+    startTurn();
+  }
+  if (action === "show-results" && battle?.awaitingFinal) showResults();
   saveState();
   render();
 });
@@ -858,9 +1055,12 @@ window.render_game_to_text = () => JSON.stringify({
   battle: battle ? {
     turn: battle.turn,
     result: battle.result,
+    awaitingNext: battle.awaitingNext,
+    awaitingFinal: battle.awaitingFinal,
+    rounds: battle.rounds.length,
     biome: battle.biome ? CARD_BY_ID[battle.biome].name : null,
-    player: { points: battle.player.points, hand: battle.player.hand.length, warrior: CARD_BY_ID[battle.player.warrior]?.name, tools: battle.player.tools.length, magic: battle.player.magic ? CARD_BY_ID[battle.player.magic].name : null },
-    opponent: { points: battle.opponent.points, warrior: CARD_BY_ID[battle.opponent.warrior]?.name, tools: battle.opponent.tools.length },
+    player: { points: battle.player.points, hand: battle.player.hand.length, cardPlayed: battle.player.cardPlayed, warrior: CARD_BY_ID[battle.player.warrior]?.name, tools: battle.player.tools.length, magic: battle.player.magic ? CARD_BY_ID[battle.player.magic].name : null },
+    opponent: { points: battle.opponent.points, cardPlayed: battle.opponent.cardPlayed, warrior: CARD_BY_ID[battle.opponent.warrior]?.name, tools: battle.opponent.tools.length },
   } : null,
 });
 
